@@ -19,7 +19,7 @@ public class Client {
 
     /*
 
-        First name, Last name and Email we can change -> delete final and add setters
+        First name, Last name and Email we can change 
 
      */
 
