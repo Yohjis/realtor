@@ -9,10 +9,12 @@ import java.util.List;
 public final class EstateService {
     private final List<Estate> activeEstateList;
     private final List<Estate> passiveEstateList;
+    private final List<Estate> amountOfEstateList;
 
     public EstateService() {
         activeEstateList = new ArrayList<>();
         passiveEstateList = new ArrayList<>();
+        amountOfEstateList = new ArrayList<>();
     }
 
     public List<Estate> getActiveEstateList() {
@@ -26,6 +28,8 @@ public final class EstateService {
     public List<Estate> getPassiveEstateList() {
         return passiveEstateList;
     }
+
+    public List<Estate> getAmountOfEstateList() {return amountOfEstateList;}
 
     public void setInactiveEstate(Estate estate) {
         if(activeEstateList.contains(estate)){
@@ -42,13 +46,13 @@ public final class EstateService {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append("\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
         stringBuilder.append("\nEstates: ");
         for(Estate e: activeEstateList){
             stringBuilder.append("\nid: ").append(e.getId()).append("\t address: ")
-                    .append(e.getAddress()).append("\t price: ").append(e.getPrice());
+                    .append(e.getAddress()).append("\t price: ").append(e.getPrice()).append("\t rooms: ").append(e.getRooms());
         }
-        stringBuilder.append("\n\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+
+                stringBuilder.append("\n\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
 
         return stringBuilder.toString();
     }
