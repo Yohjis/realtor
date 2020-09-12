@@ -2,7 +2,6 @@ package service;
 
 import entity.*;
 
-import javax.print.DocFlavor;
 import java.util.*;
 
 public final class RealtorService {
@@ -20,17 +19,13 @@ public final class RealtorService {
 
     // Public
 
-    /*public List<Realtor> getActiveRealtorList() {
-        return activeReatorList;
-    }*/
+//    public List<Realtor> getActiveRealtorList() { return activeReatorList; }
 
     public void addRealtor(Realtor realtor){ realtors.add(realtor); }
 
     @Override
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
-//        stringBuilder.append("\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
-        //realtors.stream().forEach(realtor -> stringBuilder.append(realtor.toString()));
         for(Realtor r: realtors){
             stringBuilder.append("\nid: ").append(r.getId()).append("\t firstName: ")
                     .append(r.getFirstName()).append("\t lastName: ").append(r.getLastName());

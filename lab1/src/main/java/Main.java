@@ -73,27 +73,7 @@ public class Main {
         if (estateService.getPassiveEstateList().contains(room101)) {
             System.out.println(" -SUCCESS");
         }
-        /*for (int iterator=0;iterator<dealService.length;iterator++)
-        {
-            System.out.println("...........................................\n\n");
 
-            try
-            {
-                Thread.sleep();
-            }
-            catch(InterruptedException ex)
-            {
-                Thread.currentThread().interrupt();
-            }
-
-
-            System.out.print("Parameters of the deals are: type of estate - ");
-            System.out.print(deals[iterator].getAmountOfEstates());
-            System.out.print("  ");
-            System.out.print("Realtors  - ");
-            System.out.print(deals[iterator].getEstates());
-        }
-        */
 
     }
 
