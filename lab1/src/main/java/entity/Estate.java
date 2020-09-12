@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.UUID;
 public class Estate {
 
@@ -11,20 +12,20 @@ public class Estate {
     private String type;
     private Double price;
     private String address;
-
+    private int rooms;
     // Constructors
 
     public Estate(){
         defineEstate();
     }
 
-    public Estate(String address, String type, Double price){
+    public Estate(String address, String type, Double price, int rooms){
 
         defineEstate();
-
         this.address = address;
         this.type = type;
         this.price = price;
+        this.rooms = rooms;
     }
 
     // Getters
@@ -33,20 +34,16 @@ public class Estate {
     public String getAddress() {
         return address;
     }
-
     public UUID getId(){
         return id;
     }
-    public String getType(){
-        return type;
-    }
+    public String getType(){ return type; }
     public Double getPrice(){
         return price;
     }
+    public int getRooms() { return rooms; }
 
     // Setters
-
-
     public void setAddress(String adress) {
         this.address = adress;
     }
@@ -65,7 +62,8 @@ public class Estate {
         }else throw new RuntimeException("Price must be positive"); // catch in implementation
     }
 
-    // Private
+    public void setRooms(int rooms) { this.rooms = rooms; }
+// Private
 
     private void defineEstate() {
         id = UUID.randomUUID()/*HashIdGenerator.generateHashId(ESTATE_ID_LENGTH)*/;
