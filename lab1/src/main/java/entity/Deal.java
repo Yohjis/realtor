@@ -1,15 +1,10 @@
 package entity;
 
-/*import resources.HashIdGenerator;*/
 import java.util.UUID;
 
 import java.util.*;
 
 public final class Deal {
-
-    // Constants
-
-    /*private final int HASH_ID_LENGTH = 6;*/
 
     // Variables
 
@@ -90,10 +85,9 @@ public final class Deal {
     // Private
 
     private void defineDeal() {
-        this.id = UUID.randomUUID()/*HashIdGenerator.generateHashId(HASH_ID_LENGTH)*/;
+        this.id = UUID.randomUUID();
         estatesInDeal = new ArrayList<Estate>();
         dealDate = new GregorianCalendar();
-        // dealDate.clear(); <- i am not sure you can use this, depends on functions
     }
     @Override
     public String toString() {

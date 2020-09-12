@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 public class Estate {
 
-    /*private final int ESTATE_ID_LENGTH = 6;*/
-
     // Variables
 
     private UUID id;
@@ -66,7 +64,7 @@ public class Estate {
 // Private
 
     private void defineEstate() {
-        id = UUID.randomUUID()/*HashIdGenerator.generateHashId(ESTATE_ID_LENGTH)*/;
+        id = UUID.randomUUID();
     }
 
     @Override
