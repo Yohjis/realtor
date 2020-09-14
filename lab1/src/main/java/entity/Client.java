@@ -1,6 +1,6 @@
 package entity;
 
-
+/*import resources.HashIdGenerator;*/
 import java.util.UUID;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,13 +10,23 @@ import java.util.List;
 public class Client extends User {
 
     // Constants
-public Double wallet;
+
+   /* public final int HASH_ID_LENGTH = 6;*/
+
+    // Variables
+
+    /*
+
+        First name, Last name and Email we can change -> delete final and add setters
+
+     */
 
     private List<Estate> estateWishList;
     private Calendar registrationDate;
+
     // Constructors
 
-    public Client(String firstName, String lastName, String email, Double wallet){
+    public Client(String firstName, String lastName, String email){
 
         super(firstName, lastName, email);
         defineClient();
@@ -45,8 +55,6 @@ public Double wallet;
     public List<Estate> getEstateWishList(){
         return estateWishList;
     }
-
-    public Double getWallet() { return wallet; }
 
     @Override
     public String toString() {

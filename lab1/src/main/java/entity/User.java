@@ -51,4 +51,15 @@ public class User {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "{\nUUID: " + id.toString() + "\nFirst name: " + firstName + "\nLast name: " + lastName + "\n}";
+    }
+
+    public boolean equals(User user) {
+        return user.getFirstName().equals(this.firstName) &&
+                user.getLastName().equals(this.lastName) &&
+                user.getEmail().equals(this.email) &&
+                user.getId().equals(this.id);
+    }
 }
