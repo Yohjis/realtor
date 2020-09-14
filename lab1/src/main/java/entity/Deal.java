@@ -1,17 +1,22 @@
 package entity;
 
+/*import resources.HashIdGenerator;*/
 import java.util.UUID;
 
 import java.util.*;
 
 public final class Deal {
 
+    // Constants
+
+    /*private final int HASH_ID_LENGTH = 6;*/
+
     // Variables
 
     private UUID id;
     private List<Estate> estatesInDeal;
     private Double price;
-    private Realtor realtor;
+
     private Client client;
     private Calendar dealDate;
     private final Calendar c = Calendar.getInstance();
@@ -19,13 +24,12 @@ public final class Deal {
 
     // Constructors
 
-    public Deal(Estate estate, Realtor realtor, Client client) {
+    public Deal(Estate estate, Client client) {
 
         // init definitions
         defineDeal();
 
         this.estatesInDeal.add(estate);
-        this.realtor = realtor;
         this.client = client;
         this.price = estate.getPrice();
         this.dealDate = dealDate;
@@ -42,9 +46,6 @@ public final class Deal {
         this.price = price;
     }
 
-    public void setRealtor(Realtor realtor) {
-        this.realtor = realtor;
-    }
 
     public void setClient(Client client) {
         this.client = client;
@@ -70,9 +71,6 @@ public final class Deal {
         return price;
     }
 
-    public Realtor getRealtor() {
-        return realtor;
-    }
 
     public Client getClient() {
         return client;
@@ -85,9 +83,10 @@ public final class Deal {
     // Private
 
     private void defineDeal() {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID()/*HashIdGenerator.generateHashId(HASH_ID_LENGTH)*/;
         estatesInDeal = new ArrayList<Estate>();
         dealDate = new GregorianCalendar();
+        // dealDate.clear(); <- i am not sure you can use this, depends on functions
     }
     @Override
     public String toString() {
@@ -95,7 +94,6 @@ public final class Deal {
                 "id=" + id +
                 ", product=" + estatesInDeal +
                 ", price=" + price +
-                ", seller=" + realtor +
                 ", customer=" + client +
                 ", orderDate=" + dealDate +
                 ", c=" + c +

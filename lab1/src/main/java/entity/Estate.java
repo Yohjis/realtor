@@ -1,8 +1,9 @@
 package entity;
 
-import java.util.ArrayList;
 import java.util.UUID;
 public class Estate {
+
+    /*private final int ESTATE_ID_LENGTH = 6;*/
 
     // Variables
 
@@ -10,20 +11,22 @@ public class Estate {
     private String type;
     private Double price;
     private String address;
-    private int rooms;
+    private Realtor realtor;
+
     // Constructors
 
     public Estate(){
         defineEstate();
     }
 
-    public Estate(String address, String type, Double price, int rooms){
+    public Estate(String address, String type, Double price, Realtor realtor){
 
         defineEstate();
+
+        this.realtor = realtor;
         this.address = address;
         this.type = type;
         this.price = price;
-        this.rooms = rooms;
     }
 
     // Getters
@@ -32,16 +35,27 @@ public class Estate {
     public String getAddress() {
         return address;
     }
+
     public UUID getId(){
         return id;
     }
-    public String getType(){ return type; }
+    public String getType(){
+        return type;
+    }
     public Double getPrice(){
         return price;
     }
-    public int getRooms() { return rooms; }
 
+    public Realtor getRealtor() {
+        return realtor;
+    }
     // Setters
+
+
+    public void setRealtor(Realtor realtor) {
+        this.realtor = realtor;
+    }
+
     public void setAddress(String adress) {
         this.address = adress;
     }
@@ -60,16 +74,15 @@ public class Estate {
         }else throw new RuntimeException("Price must be positive"); // catch in implementation
     }
 
-    public void setRooms(int rooms) { this.rooms = rooms; }
-// Private
+    // Private
 
     private void defineEstate() {
-        id = UUID.randomUUID();
+        id = UUID.randomUUID()/*HashIdGenerator.generateHashId(ESTATE_ID_LENGTH)*/;
     }
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "Estate {" +
                 "id=" + id +
                 ", adress='" + address + '\'' +
                 ", type='" + type + '\'' +

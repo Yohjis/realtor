@@ -2,34 +2,52 @@ package service;
 
 
 import entity.Estate;
+import entity.Realtor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public final class EstateService {
+
+    // Variables
+
     private final List<Estate> activeEstateList;
     private final List<Estate> passiveEstateList;
-    private final List<Estate> amountOfEstateList;
+
+    // Constructor
 
     public EstateService() {
         activeEstateList = new ArrayList<>();
         passiveEstateList = new ArrayList<>();
-        amountOfEstateList = new ArrayList<>();
     }
+
+    // Public
 
     public List<Estate> getActiveEstateList() {
         return activeEstateList;
-    }
-
-    public void addEstate(Estate estate){
-      activeEstateList.add(estate);
     }
 
     public List<Estate> getPassiveEstateList() {
         return passiveEstateList;
     }
 
-    public List<Estate> getAmountOfEstateList() {return amountOfEstateList;}
+    public void addEstate(Estate estate){
+      activeEstateList.add(estate);
+    }
+
+    public void deleteEstate(Estate estate) {
+        if(activeEstateList.contains(estate)) {
+            activeEstateList.remove(estate);
+            return;
+        }
+
+        if(passiveEstateList.contains(estate)) {
+            passiveEstateList.remove(estate);
+            return;
+        }
+
+        throw new RuntimeException("Not found");
+    }
 
     public void setInactiveEstate(Estate estate) {
         if(activeEstateList.contains(estate)){
@@ -43,16 +61,39 @@ public final class EstateService {
         passiveEstateList.clear();
     }
 
+    public List<Estate> getByPrice(double priceLow, double priceHigh) {
+        List<Estate> estatesByPrice = new ArrayList<>();
+        activeEstateList.stream()
+                .filter(estate -> {
+                    final Double price = estate.getPrice();
+                    if(price > priceLow && price < priceHigh)
+                        return true;
+                    else return false;
+                }).forEach(estate -> estatesByPrice.add(estate));
+        return estatesByPrice;
+    }
+
+    public List<Estate> getEstateListOfRealtor(Realtor realtor) {
+        List<Estate> estatesOfRealtor = new ArrayList<>();
+
+        activeEstateList
+                .stream()
+                .filter(estate -> (estate.getRealtor().equals(realtor)))
+                .forEach(estate -> estatesOfRealtor.add(estate));
+
+        return estatesOfRealtor;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("#############################################");
         stringBuilder.append("\nEstates: ");
         for(Estate e: activeEstateList){
             stringBuilder.append("\nid: ").append(e.getId()).append("\t address: ")
-                    .append(e.getAddress()).append("\t price: ").append(e.getPrice()).append("\t rooms: ").append(e.getRooms());
+                    .append(e.getAddress()).append("\n price: ").append(e.getPrice());
         }
-
-                stringBuilder.append("\n\n00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+        stringBuilder.append("\n\n#############################################");
 
         return stringBuilder.toString();
     }
